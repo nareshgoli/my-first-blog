@@ -1,18 +1,22 @@
-<html>
-    <head>
-        <title>Django Girls blog</title>
-    </head>
-    <body>
-            <div>
-                    <h1><a href="/">Django Girls Blog</a></h1>
-                </div>
-                
-                {% for post in posts %}
-                    <div>
-                        <p>published: {{ post.published_date }}</p>
-                        <h2><a href="">{{ post.title }}</a></h2>
-                        <p>{{ post.text|linebreaksbr }}</p>
+{% extends 'blog/base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+    	
+    {% for post in posts %}
+        <div class="post">
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <div class="post-footer">
+                {% if post.published_date %}
+                    <div class="date">
+                        <p>{{ post.published_date|naturaltime }}</p>
                     </div>
-                {% endfor %}
-    </body>
-</html>
+                {% endif %}
+            </div>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
+        </div>
+    {% endfor %}
+		   
+{% endblock content %}
