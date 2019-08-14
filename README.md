@@ -4,6 +4,6 @@ Django Girls Tutorial is great and beginner friendly tutorial to learn [Django](
 My application [demo](http://srinandan33.pythonanywhere.com) on [pythonanywhere](https://www.pythonanywhere.com)
 
 > username: admin  
-> password: admin12345
+> password: admin
 
 ![blog](https://tutorial.djangogirls.org/en/images/application.png)
